@@ -5,6 +5,14 @@ require_once "connectDB.php";
 // Define variables and initialize with empty values
 $username = $password = $confirm_password = "";
 $username_err = $password_err = $confirm_password_err = "";
+
+// if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
+// 	// echo "<h1>Hi, <b>" . htmlspecialchars($_SESSION["username"]) . "</b>. Welcome.</h1>";
+
+// } else {
+// 	header("location: login.php");
+// 	exit;
+// }
  
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -101,6 +109,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <title>Sign Up</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/header.css">
+    <link rel="stylesheet" type="text/css" href="css/login.css">
     <style>
         body{ font: 14px sans-serif; }
         .wrapper{ width: 360px; padding: 20px; }
@@ -112,29 +121,42 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 		<a href="index.php">Biometric Attendance</a>
 	</div>
 </div>
-    <div class="d-flex align-items-center justify-content-center">
+<main>
+  <h1 class="slideInDown animated">Please fill this form to create an account</h1>
+  <!-- <h1 class="slideInDown animated" id="reset">Please, Enter your Email to send the reset password link</h1> -->
+<!-- Log In -->
+  <section>
+    <div class="slideInDown animated">
+        <div class="login-page">
+        <div class="form">
+    <!-- <div class="d-flex align-items-center justify-content-center">
         <h2>Sign Up</h2>
 </div>
     <div class="d-flex align-items-center justify-content-center">
         <p>Please fill this form to create an account.</p>
-</div>
+</div> -->
     <div class="d-flex align-items-center justify-content-center">
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
             <div class="form-group">
-                <label>Username</label>
-                <input type="text" name="username" class="form-control <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>">
+                <!-- <label>Username</label> -->
+                <input type="text" name="username" placeholder="Username" class="form-control <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>">
                 <span class="invalid-feedback"><?php echo $username_err; ?></span>
             </div>    
             <div class="form-group">
-                <label>Password</label>
-                <input type="password" name="password" class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $password; ?>">
+                <!-- <label>Password</label> -->
+                <input type="password" name="password" placeholder="Password" class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $password; ?>">
                 <span class="invalid-feedback"><?php echo $password_err; ?></span>
             </div>
             <div class="form-group">
-                <label>Confirm Password</label>
-                <input type="password" name="confirm_password" class="form-control <?php echo (!empty($confirm_password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $confirm_password; ?>">
+                <!-- <label>Confirm Password</label> -->
+                <input type="password" name="confirm_password" placeholder="Confirm Password" class="form-control <?php echo (!empty($confirm_password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $confirm_password; ?>">
                 <span class="invalid-feedback"><?php echo $confirm_password_err; ?></span>
             </div>
+            <select class = "form-control <?php echo (!empty($department_err)) ? 'is-invalid' : ''; ?>" name="department" id="department">
+                <option value="admin">Admin</option>
+                <option value="cse">CSE</option>
+                <option value="ce">CE</option>
+            </select><br>
             <div class="form-group">
                 <input type="submit" class="btn btn-primary" value="Submit">
                 <input type="reset" class="btn btn-secondary ml-2" value="Reset">
@@ -142,5 +164,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             <p>Already have an account? <a href="login.php">Login here</a>.</p>
         </form>
     </div>    
+</div></div></div></section></main>
 </body>
 </html>

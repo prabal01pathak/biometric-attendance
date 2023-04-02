@@ -54,6 +54,11 @@
 				<input type="email" name="email" id="email" placeholder="User Email...">
 			</fieldset>
 			<fieldset>
+				<select class="division" name="division" id="division">
+					<option value="0">Select Division</option>
+					<option value="div 1">Division 1</option>
+					<option value="div 2">Division 2</option>
+					<option value="div 3">Division 3</option>
 			<legend><span class="number">3</span> Additional Info</legend>
 			<label>
 				Time In:
@@ -80,6 +85,7 @@
 		          <th>S.No</th>
 		          <th>Date</th>
 		          <th>Time in</th>
+				  <th>Div.</th>
 		        </tr>
 		      </thead>
 		    </table>

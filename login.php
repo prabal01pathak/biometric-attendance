@@ -95,6 +95,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <title>Login</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/header.css">
+    <link rel="stylesheet" type="text/css" href="css/login.css">
     <style>
         body{ font: 14px sans-serif; }
         .wrapper{ width: 360px; padding: 20px; }
@@ -105,14 +106,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 	<div class="logo">
 		<a href="index.php">Biometric Attendance</a>
 	</div>
-</div>
-    <div class="d-flex align-items-center justify-content-center">
-        <h2 class=>Login</h2>
-</div>
-    <div class="d-flex align-items-center justify-content-center">
-        <p>Please fill in your credentials to login.</p>
-</div>
+  <h1 class="slideInDown animated">Please, Login with the Admin E-mail and Password</h1>
+  <h1 class="slideInDown animated" id="reset">Please, Enter your Email to send the reset password link</h1>
+<!-- Log In -->
+<section>
+  <div class="slideInDown animated">
+    <div class="login-page">
+      <div class="form">
 
+            <div class="alert1"></div>
     <div class="d-flex align-items-center justify-content-center">
         <?php 
         if(!empty($login_err)){
@@ -120,15 +122,18 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         }        
         ?>
 
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+        <form class='login-form' action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+          <!-- <input type="email" name="email" id="email" placeholder="E-mail..." required/>
+          <input type="password" name="pwd" id="pwd" placeholder="Password" required/>
+          <button type="submit" name="login" id="login">login</button> -->
             <div class="form-group">
-                <label>Username</label>
-                <input type="text" name="username" class="form-control <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>">
+                <!-- <label>Username</label> -->
+                <input type="text" name="username" placeholder="Username" class="form-control <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>">
                 <span class="invalid-feedback"><?php echo $username_err; ?></span>
             </div>    
             <div class="form-group">
-                <label>Password</label>
-                <input type="password" name="password" class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>">
+                <!-- <label>Password</label> -->
+                <input type="password" name="password" placeholder="Password" class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>">
                 <span class="invalid-feedback"><?php echo $password_err; ?></span>
             </div>
             <div class="form-group">
@@ -137,5 +142,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             <p>Don't have an account? <a href="register.php">Sign up now</a>.</p>
         </form>
     </div>
+    </div></div></div></section>
 </body>
 </html>
